@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name       Add TP2 Search Capabilities back to TP3
 // @version    1.0
-// @include      *targetprocess.corp.volusion.com*
 // @include      *targetprocess*
-// @include      *targetprocess.ads.volusion.com*
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js
 // @copyright  2014
 // ==/UserScript==
+
+/* 
+@include above should be changed to the hostname of your TargetProcess instance
+*/
 
 
 (function ($, window) {
