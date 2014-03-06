@@ -15,7 +15,8 @@
 
 	var $modal, $overlay, $TP2Link, iframe, baseSearchPath,
 		iframe = document.createElement('iframe'),
-		iframeClass = '.tp2search'
+		iframeClass = '.tp2search',
+		finalElementOnPageSelector = '.context-menu-list',
 		baseSearchPath = '/Search/Search.aspx?SearchString=';
 
 	function showModal(uri) {
@@ -69,14 +70,18 @@
 		appendNewSearchLink();
 	}
 
-	function JQReady() {
-		if(window.$ && $('.context-menu-list').length) {
+	function tpReady() {
+		/* TP requires() in their depencencies after DOM ready fires.
+		   We need to wait for their dependencies to finish building
+		   out the complete DOM before we want to begin
+		*/
+		if(window.$ && $(finalElementOnPageSelector).length) {
 			init();
 		} else {
-			setTimeout(JQReady, 500);
+			setTimeout(tpReady, 500);
 		}
 	}
 
-	JQReady();
+	tpReady();
 
 }(jQuery, window));
